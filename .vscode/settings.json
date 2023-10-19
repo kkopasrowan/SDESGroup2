@@ -1,6 +1,5 @@
 {
     "java.project.sourcePaths": [
-        "sdes/src/main/java/crypto",
-        "sdes/src/test/java/crypto"
+        "sdes"
     ]
 }

@@ -7,14 +7,14 @@ public class Permutation {
     /*
      * todo: return a bit array which is the left half of the parameter, inp.
      */
-    public boolean[] lh(boolean[] inp){
+    public static boolean[] lh(boolean[] inp){
         return null;
     }
 
     /*
      * todo: return a bit array which is the right half of the parameter, inp.
      */
-    public boolean[] rh(boolean[] inp) {
+    public static boolean[] rh(boolean[] inp) {
         return null; 
     }
     /**
@@ -24,7 +24,7 @@ public class Permutation {
      * @param y right hand side bits
      * @return x and y concatinated
      */
-    public boolean[] concat(boolean[] x, boolean[] y){
+    public static boolean[] concat(boolean[] x, boolean[] y){
         int xLen = x.length;
         int yLen = y.length;
         boolean[] result = new boolean[xLen + yLen];
@@ -42,7 +42,7 @@ public class Permutation {
     /**
      * todo: Expand and/or permute and/or select from the bit array, inp, producing an expanded/permuted/selected bit array. Use the expansion/permutation vector epv.
      */
-    public boolean[] expPerm(boolean[] inp, int[] epv){
+    public static boolean[] expPerm(boolean[] inp, int[] epv){
         return null; 
     }
 }

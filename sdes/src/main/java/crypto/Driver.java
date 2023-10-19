@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Driver {
     public static void main()
     {       
-        SDES sdes = new SDES();
+        crypto.SDES sdes = new crypto.SDES();
 
         Scanner scanner = new Scanner (System.in);
 
