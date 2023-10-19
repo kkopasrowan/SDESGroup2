@@ -1,6 +1,5 @@
 package crypto;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 
@@ -10,8 +9,11 @@ public class SDES {
 
     }
 
-    /*
-     * todo: Convert the given byte array to a String
+    /**
+     * Convert the given byte array to a String
+     * 
+     * @param inp An array of bytes, hopefully storing the codes of printable characters.
+     * @return The characters as a String.
      */
     public String byteArrayToCharString(byte[] inp){
         String result = new String(inp);
@@ -50,7 +52,4 @@ public class SDES {
     public void getKey10(Scanner scanner){
         
     }
-
-    
-
 }

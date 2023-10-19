@@ -17,12 +17,26 @@ public class Permutation {
     public boolean[] rh(boolean[] inp) {
         return null; 
     }
-
     /**
-     * todo: return the concatenation of x and y
+     * Concatenate the two bit arrays, x || y
+     * 
+     * @param x left hand side bits
+     * @param y right hand side bits
+     * @return x and y concatinated
      */
     public boolean[] concat(boolean[] x, boolean[] y){
-        return null; 
+        int xLen = x.length;
+        int yLen = y.length;
+        boolean[] result = new boolean[xLen + yLen];
+    
+        for (int i = 0; i < xLen; i++) {
+            result[i] = x[i];
+        }
+            
+        for (int i = 0; i < yLen; i++) {
+            result[xLen + i] = y[i];
+        }
+        return result; 
     }
 
     /**
