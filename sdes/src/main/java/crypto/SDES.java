@@ -1,5 +1,6 @@
 package crypto;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 
@@ -13,7 +14,9 @@ public class SDES {
      * todo: Convert the given byte array to a String
      */
     public String byteArrayToCharString(byte[] inp){
-        return null; 
+        String result = new String(inp);
+        return result;
+    
     }
 
     /*
@@ -47,5 +50,7 @@ public class SDES {
     public void getKey10(Scanner scanner){
         
     }
+
+    
 
 }
