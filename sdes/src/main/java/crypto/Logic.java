@@ -6,8 +6,12 @@ public class Logic {
      /*
      * todo: Exclusive OR. x and y must have the same length. x xor y is the same as x != y
      */
-    public static boolean[] xor(boolean[] x, boolean[] y){
-        return null; 
+    public static boolean[] xor(boolean[] x, boolean[] y) throws IllegalArgumentException{
+        if(x.length != y.length) throw new IllegalArgumentException("x and y must be of the same length.");
+        boolean[] result = new boolean[x.length];
+        for(int i = 0; i < x.length; i++) result[i] = Boolean.logicalXor(x[i], y[i]);
+        return result; 
+
     }
 
     /**
