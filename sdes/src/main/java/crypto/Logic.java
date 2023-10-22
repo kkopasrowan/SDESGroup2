@@ -15,14 +15,15 @@ public class Logic {
     }
 
     /**
-     * todo: This is the 'round' function. It is its own inverse. f(x,k) = (L(x) xor feistel(k, R(x))) || R(x)
+     * todo: This is the 'round' function. 
+     *  f(x,k) = P4 (s0 (L (k xor EP(x))) || s1 (R (k xor EP(x)))
      */
     public static boolean[] f(boolean[] x, boolean[] k){
         return null; 
     }
 
     /*
-     * todo: feistel(k,x) = P4 (s0 (L (k xor EP(x))) || s1 (R (k xor EP(x)))
+     * todo: feistel(k,x) =  R(x) || (L(x) xor f(R(x), k))
      */
     public static boolean[] feistel(boolean[] k, boolean[] x){
         return null; 
