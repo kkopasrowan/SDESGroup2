@@ -3,17 +3,16 @@ package crypto;
 import java.util.Scanner;
 
 public class Driver {
-    public static void main()
+    public static void main(String[] args)
     {       
         crypto.SDES sdes = new crypto.SDES();
 
         Scanner scanner = new Scanner (System.in);
 
-        String plain = "x";
         System.out.println ("Enter plain text, or hit 'Enter' to terminate");
-        plain = scanner.nextLine();
+        String plain = scanner.nextLine();
         byte [] cipher;
-        while (plain.length() > 0){   
+        while (!plain.isEmpty()){
             cipher = sdes.encrypt  (plain);
             System.out.print ("Cipher is ");
             sdes.show(cipher);
