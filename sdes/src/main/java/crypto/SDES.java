@@ -20,7 +20,7 @@ public class SDES {
 
     /**
      * Convert the given byte array to a String
-     * 
+     * @author Kayla Weldon
      * @param inp An array of bytes, hopefully storing the codes of printable characters.
      * @return The characters as a String.
      */

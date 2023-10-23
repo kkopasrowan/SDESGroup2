@@ -19,7 +19,7 @@ public class Permutation {
     }
     /**
      * Concatenate the two bit arrays, x || y
-     * 
+     * @author Kayla Weldon
      * @param x left hand side bits
      * @param y right hand side bits
      * @return x and y concatinated
