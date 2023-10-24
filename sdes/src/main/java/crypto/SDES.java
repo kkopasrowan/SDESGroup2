@@ -9,7 +9,7 @@ public class SDES {
     public static final int[] IP_INV = new int[] {4, 1, 3, 5, 7, 2, 8, 6};
     public static final int[] EP = new int[] {4, 1, 2, 3, 2, 3, 4, 1};
 
-    public static boolean[] key;
+    public static boolean[] key = new boolean[10];
     public static boolean[] K1 = new boolean[8];
     public static boolean[] K2 = new boolean[8];
     
@@ -83,10 +83,31 @@ public class SDES {
         System.out.println(builder);
     }
 
-    /*
-    * todo: Get a 10 bit key from the keyboard, such as 1010101010. Store it as an array of booleans in a field.
-    */
+    /**
+     * Get a 10 bit key from the keyboard, such as 1010101010. 
+     * Stores it as an array of booleans in a field.
+     * @author Kayla Weldon
+     * @param scanner scanner to read keyboard input
+     */
     public void getKey10(Scanner scanner){
-        
+        System.out.println("Enter a 10-bit key: ");
+        String keyInput = scanner.nextLine();
+
+        //check input length
+        if (keyInput.length() != 10) {
+            System.out.println("Key must be 10 bits.");
+            getKey10(scanner);
+        }
+
+        for (int i =0; i < 10; i++) {
+            char bitChar = keyInput.charAt(i);
+            if (bitChar == '0') {
+                key[i] = false;
+            } else if (bitChar == '1') {
+                key[i] = true;
+            } else {
+                System.out.println("Invalid bit at position " + i + ":" + bitChar);
+            }
+        }
     }
 }
