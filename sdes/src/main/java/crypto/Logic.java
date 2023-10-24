@@ -26,6 +26,19 @@ public class Logic {
      * todo: feistel(k,x) =  R(x) || (L(x) xor f(R(x), k))
      */
     public static boolean[] feistel(boolean[] k, boolean[] x){
-        return null; 
+        return Permutation.concat(
+            Permutation.rh(x), 
+            Logic.xor(Permutation.lh(x), f(Permutation.rh(x), k))
+        ); 
+    }
+
+    /*
+     * todo: feistel(k,x) =  (R(x) xor f(L(x), k)) || L(x)
+     */
+    public static boolean[] feistel_decr(boolean[] k, boolean[] x){
+        return Permutation.concat(
+            Logic.xor(Permutation.rh(x), f(Permutation.lh(x), k)), 
+            Permutation.lh(x)
+        ); 
     }
 }
