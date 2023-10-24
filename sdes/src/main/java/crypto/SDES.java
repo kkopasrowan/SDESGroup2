@@ -30,20 +30,22 @@ public class SDES {
     
     }
 
-    /*
+    /**
      * Encrypt the given string using SDES Each character produces a byte of cipher.
+     * @author James Blake
      */
     public byte[] encrypt(String msg){
-        char[] charArray = msg.toCharArray();
+        byte[] plaintext = msg.getBytes();
         byte[] encrypted = new byte[msg.length()];
-        for (int i = 0; i < charArray.length; i++) {
-            encrypted[i] = encryptByte((byte)charArray[i]);
+        for (int i = 0; i < plaintext.length; i++) {
+            encrypted[i] = encryptByte(plaintext[i]);
         }
         return encrypted;
     }
 
-    /*
-     * todo: Decrypt the given byte array.
+    /**
+     * Decrypt the given byte array.
+     * @author James Blake
      */
     public byte[] decrypt(byte[] cipher){
         byte[] decrypted = new byte[cipher.length];
@@ -54,8 +56,11 @@ public class SDES {
     }
 
     
-    /** Send the bitArray to stdout as 1's and 0's */
-    public void show(boolean[] inp){
+    /**
+     * Send the bitArray to stdout as 1's and 0's
+     * @author James Blake
+     */
+    public static void show(boolean[] inp){
         StringBuilder builder = new StringBuilder(inp.length);
         for(int i = 0; i < inp.length; i++) {
             // Convert true/false to 1/0 and append
@@ -70,15 +75,12 @@ public class SDES {
 
     /**
      * Send the byteArray to stdout
+     * @author James Blake
      */
-    public void show(byte[] byteArray){
-        StringBuilder builder = new StringBuilder(byteArray.length * Byte.SIZE);
+    public static void show(byte[] byteArray) {
+        StringBuilder builder = new StringBuilder(byteArray.length);
         for (byte b : byteArray) {
-            for(int i = 0; i < Byte.SIZE; i++) {
-                // Check each bit by shifting a mask over
-                builder.append((b & (1 << i)) == 0 ? '0' : '1');
-            }
-            builder.append(' ');
+            builder.append(b).append(' ');
         }
         System.out.println(builder);
     }

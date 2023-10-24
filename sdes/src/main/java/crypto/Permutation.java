@@ -51,7 +51,7 @@ public class Permutation {
      * @author Kayla Weldon
      * @param x left hand side bits
      * @param y right hand side bits
-     * @return x and y concatinated
+     * @return x and y concatenated
      */
     public static boolean[] concat(boolean[] x, boolean[] y){
         int xLen = x.length;

@@ -4,8 +4,9 @@ import static crypto.SDES.*;
 import static crypto.Logic.*;
 
 public class ByteHandler {
-    /*
+    /**
      * Encrypt a single byte using SDES
+     * @author James Blake
      */
     public static byte encryptByte(byte b) {
         boolean[] afterIP = expPerm(byteToBitArray(b, 1), IP);
@@ -17,6 +18,7 @@ public class ByteHandler {
 
     /**
      * Decrypt a single byte using SDES
+     * @author James Blake
      */
     public static byte decryptByte(byte b){
         boolean[] afterIP = expPerm(byteToBitArray(b, 1), IP);
