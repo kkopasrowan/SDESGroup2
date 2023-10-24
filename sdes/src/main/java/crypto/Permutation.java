@@ -4,19 +4,48 @@ package crypto;
  * 
  */
 public class Permutation {
-    /*
-     * todo: return a bit array which is the left half of the parameter, inp.
+
+    /**
+     * Left half of x, L(x)
+     * @author Kayla Weldon
+     * @param inp input of bits 
+     * @return a bit array which is the left half of the parameter, inp
      */
     public static boolean[] lh(boolean[] inp){
-        return null;
+        int inpSize = inp.length;
+
+        // check if inp is more than 1 bit
+        if (inpSize < 2) {
+            throw new IllegalArgumentException("Input bit array must have at least 2 bits.");
+        }
+
+        int resultSize = inpSize / 2;
+        boolean[] result = new boolean[resultSize];
+        //copy left half of bits
+        System.arraycopy(inp, 0, result, 0, resultSize);
+        return result;
     }
 
-    /*
-     * todo: return a bit array which is the right half of the parameter, inp.
+    /**
+     * Right half of x, R(x)
+     * @author Kayla Weldon
+     * @param inp input of bits
+     * @return a bit array which is the right half of the parameter, inp
      */
     public static boolean[] rh(boolean[] inp) {
-        return null; 
+        int inpSize = inp.length;
+
+        // check if inp is more than 1 bit
+        if (inpSize < 2) {
+            throw new IllegalArgumentException("Input bit array must have at least 2 bits.");
+        }
+
+        int resultSize = inpSize / 2;
+        boolean[] result = new boolean[resultSize];
+        System.arraycopy(inp, inpSize - resultSize, result, 0, resultSize);
+        return result;    
     }
+
     /**
      * Concatenate the two bit arrays, x || y
      * @author Kayla Weldon
