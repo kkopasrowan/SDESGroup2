@@ -1,5 +1,7 @@
 package crypto;
 
+import java.util.Arrays;
+
 /**
  * 
  */
@@ -78,6 +80,9 @@ public class Permutation {
      * @throws java.lang.IndexOutOfBoundsException
      */
     public static boolean[] expPerm(boolean[] inp, int[] epv){
-        return null; 
+        
+        boolean[] result = new boolean[epv.length];
+    
+        return result;
     }
 }
