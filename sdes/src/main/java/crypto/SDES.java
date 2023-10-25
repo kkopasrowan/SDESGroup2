@@ -91,22 +91,23 @@ public class SDES {
      * @author Kayla Weldon
      * @param scanner scanner to read keyboard input
      */
-    public void getKey10(Scanner scanner) {
-        System.out.println("Enter a 10-bit key: ");
-        String keyInput = scanner.nextLine();
-
+    public static void getKey10(Scanner scanner) {
+        String keyInput = "";
         boolean valid = false;
-
+        
         while (!valid) { 
-            System.out.println("Key must be 10 bits of 1s and 0s. Enter again:");
+            System.out.println("Enter a 10-bit key: ");
             keyInput = scanner.nextLine();
 
             String test = keyInput.replace("0", "");
-            test = keyInput.replace("1", "");
+            test = test.replace("1", "");
 
-            if (test.length() == 0) {
+            if (test.length() == 0 && keyInput.length() == 10) {
                 valid = true;
+                break;
             }
+
+            System.out.println("Key must be 10 bits of 1s and 0s.");
         }
 
         for (int i = 0; i < 10; i++) {
@@ -117,5 +118,10 @@ public class SDES {
                 key[i] = true;
             }
         }
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        getKey10(scan);
     }
 }
