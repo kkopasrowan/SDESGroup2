@@ -1,7 +1,5 @@
 package crypto;
 
-import java.util.Arrays;
-
 /**
  * 
  */
