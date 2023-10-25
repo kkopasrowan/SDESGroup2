@@ -23,7 +23,11 @@ public class Logic {
     }
 
     
-
+    /**
+     * @author Keegan Kopas
+     * @param x
+     * @return
+     */
     public static boolean[] sboxOne(boolean[] x){
 
         boolean[][] s_1 = {
@@ -48,6 +52,11 @@ public class Logic {
         return sboxGeneric(x, s_1);
     }
 
+    /**
+     * @author Keegan Kopas
+     * @param x
+     * @return
+     */
     public static boolean[] sboxTwo(boolean[] x){
 
         boolean[][] s_1 = {
