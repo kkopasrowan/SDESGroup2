@@ -69,6 +69,7 @@ public class Permutation {
     }
 
     /**
+<<<<<<< HEAD
      * Expand and/or permute and/or select from the bit array, inp, 
      * producing an expanded/permuted/selected bit array. 
      * @author Kayla Weldon
@@ -76,6 +77,14 @@ public class Permutation {
      * @param epv - An expansion and/or permutation and/or selection vector; all numbers
      * @return The permuted/expanded/selected bit array, or null if there is an error.
      * @throws java.lang.IndexOutOfBoundsException
+=======
+     * @author Keegan Kopas
+     */
+    public static boolean 
+
+    /**
+     * todo: Expand and/or permute and/or select from the bit array, inp, producing an expanded/permuted/selected bit array. Use the expansion/permutation vector epv.
+>>>>>>> ee094c86481a3505429c56caa17ef986e05748a4
      */
     public static boolean[] expPerm(boolean[] inp, int[] epv){
         
