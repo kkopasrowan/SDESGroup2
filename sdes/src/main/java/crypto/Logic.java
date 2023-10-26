@@ -14,6 +14,7 @@ public class Logic {
 
     }
 
+
     /**
      * todo: This is the 'round' function. 
      *  f(x,k) = P4 (s0 (L (k xor EP(x))) || s1 (R (k xor EP(x)))

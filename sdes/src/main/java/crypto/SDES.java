@@ -25,8 +25,7 @@ public class SDES {
      * @return The characters as a String.
      */
     public String byteArrayToCharString(byte[] inp){
-        String result = new String(inp);
-        return result;
+        return new String(inp);
     
     }
 
@@ -118,10 +117,5 @@ public class SDES {
                 key[i] = true;
             }
         }
-    }
-
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        getKey10(scan);
     }
 }

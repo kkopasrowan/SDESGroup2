@@ -10,6 +10,7 @@ public class Permutation {
      * @author Kayla Weldon
      * @param inp input of bits 
      * @return a bit array which is the left half of the parameter, inp
+     * @throws IllegalArgumentException
      */
     public static boolean[] lh(boolean[] inp){
         int inpSize = inp.length;
@@ -23,6 +24,7 @@ public class Permutation {
         boolean[] result = new boolean[resultSize];
         //copy left half of bits
         System.arraycopy(inp, 0, result, 0, resultSize);
+
         return result;
     }
 
@@ -31,6 +33,7 @@ public class Permutation {
      * @author Kayla Weldon
      * @param inp input of bits
      * @return a bit array which is the right half of the parameter, inp
+     * @throws IllegalArgumentException
      */
     public static boolean[] rh(boolean[] inp) {
         int inpSize = inp.length;
@@ -42,7 +45,9 @@ public class Permutation {
 
         int resultSize = inpSize / 2;
         boolean[] result = new boolean[resultSize];
-        System.arraycopy(inp, inpSize - resultSize, result, 0, resultSize);
+        // copy right half of bits
+        System.arraycopy(inp, resultSize, result, 0, resultSize);
+
         return result;    
     }
 
@@ -54,17 +59,18 @@ public class Permutation {
      * @return x and y concatenated
      */
     public static boolean[] concat(boolean[] x, boolean[] y){
-        int xLen = x.length;
-        int yLen = y.length;
-        boolean[] result = new boolean[xLen + yLen];
-    
-        for (int i = 0; i < xLen; i++) {
-            result[i] = x[i];
+        int length = x.length + y.length;
+        boolean[] result = new boolean[length];
+        
+        //concatenates x and y
+        for (int i = 0; i < length; i++) {
+            if (i < x.length) {
+                result[i] = x[i];
+            } else {
+                result[i] = y[i - x.length];
+            }
         }
-            
-        for (int i = 0; i < yLen; i++) {
-            result[xLen + i] = y[i];
-        }
+        
         return result; 
     }
 
@@ -73,14 +79,48 @@ public class Permutation {
      * producing an expanded/permuted/selected bit array. 
      * @author Kayla Weldon
      * @param inp - A bit array represented as booleans, true=1, false=0.
-     * @param epv - An expansion and/or permutation and/or selection vector; all numbers
+     * @param epv - An expansion and/or permutation and/or selection vector
      * @return The permuted/expanded/selected bit array, or null if there is an error.
      * @throws java.lang.IndexOutOfBoundsException
      */
     public static boolean[] expPerm(boolean[] inp, int[] epv){
+        if(inp == null || epv == null) {
+            return null;
+        }
         
         boolean[] result = new boolean[epv.length];
+
+        for(int i = 0; i < epv.length; i++) {
+            //check epv at i to determine if in bounds
+            if (epv[i] < 0 || epv[i] >= inp.length) {
+                throw new IndexOutOfBoundsException("Index out of bounds: " + epv[i]);
+
+            }
+            //permute
+            result[i] = inp[epv[i]];
+        }
     
         return result;
+    }
+
+    public static void main(String[] args) {
+        boolean[] x = {true, true, false, true};
+        boolean[] y = {false, true, false, true};
+        boolean [] result = concat(x, y);
+        boolean[] lh = lh(result);
+        boolean[] rh = rh(result);
+
+        for(int i = 0; i < result.length; i++) {
+            System.out.print(result[i]);
+        }
+        System.out.println();
+        for(int i = 0; i < lh.length; i++) {
+            System.out.print(lh[i]);
+        }
+        System.out.print(" ");
+        for(int i = 0; i < rh.length; i++) {
+            System.out.print(rh[i]);
+        }
+
     }
 }
