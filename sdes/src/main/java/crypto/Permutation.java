@@ -102,25 +102,4 @@ public class Permutation {
     
         return result;
     }
-
-    public static void main(String[] args) {
-        boolean[] x = {true, true, false, true};
-        boolean[] y = {false, true, false, true};
-        boolean [] result = concat(x, y);
-        boolean[] lh = lh(result);
-        boolean[] rh = rh(result);
-
-        for(int i = 0; i < result.length; i++) {
-            System.out.print(result[i]);
-        }
-        System.out.println();
-        for(int i = 0; i < lh.length; i++) {
-            System.out.print(lh[i]);
-        }
-        System.out.print(" ");
-        for(int i = 0; i < rh.length; i++) {
-            System.out.print(rh[i]);
-        }
-
-    }
 }
