@@ -39,10 +39,7 @@ public class Permutation {
         return result; 
     }
 
-    /**
-     * @author Keegan Kopas
-     */
-    public static boolean 
+
 
     /**
      * todo: Expand and/or permute and/or select from the bit array, inp, producing an expanded/permuted/selected bit array. Use the expansion/permutation vector epv.

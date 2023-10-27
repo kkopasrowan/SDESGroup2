@@ -1,9 +1,13 @@
 package crypto;
 
+/**
+ * @author Keegan Kopas
+ */
 public class Logic {
     
 
-     /*
+     /**
+      * @author Keegan Kopas
      * todo: Exclusive OR. x and y must have the same length. x xor y is the same as x != y
      */
     public static boolean[] xor(boolean[] x, boolean[] y) throws IllegalArgumentException{
@@ -15,6 +19,7 @@ public class Logic {
     }
 
     /**
+     * @author Keegan Kopas
      * todo: This is the 'round' function. 
      *  f(x,k) = P4 (s0 (L (k xor EP(x))) || s1 (R (k xor EP(x)))
      */
@@ -81,7 +86,12 @@ public class Logic {
         return sboxGeneric(x, s_1);
     }
 
-
+    /**
+     * @authbor Keegan KOpas
+     * @param x
+     * @param finalCollumn
+     * @return
+     */
     private static boolean[] sboxGeneric(boolean[] x, boolean[][] finalCollumn){
         if(x.length != 4) throw new IllegalArgumentException("Sbox requires a length of 4");
         int n = 0, l = x.length;
@@ -93,6 +103,11 @@ public class Logic {
     }
 
 
+    /**
+     * @author Keegan Kopas
+     * @param num
+     * @return
+     */
     private static boolean[]  boolArrayFromNumber(int num) {
         if (num > 3) throw new IllegalArgumentException("Oversized value in sbox, boolArrayFromNumber");
         boolean [] flags = new boolean[2];
@@ -102,7 +117,8 @@ public class Logic {
         return flags; 
     }
 
-    /*
+    /**
+     * @author Keegan Kopas
      * todo: feistel(k,x) =  R(x) || (L(x) xor f(R(x), k))
      */
     public static boolean[] feistel(boolean[] k, boolean[] x){
