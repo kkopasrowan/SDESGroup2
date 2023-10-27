@@ -132,7 +132,8 @@ public class Logic {
         ); 
     }
 
-    /*
+    /**
+     * @author Keegan Kopas
      * todo: feistel(k,x) =  (R(x) xor f(L(x), k)) || L(x)
      */
     public static boolean[] feistel_decr(boolean[] k, boolean[] x){
