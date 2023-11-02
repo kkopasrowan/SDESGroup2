@@ -2,20 +2,27 @@ package crypto;
 
 import java.util.Scanner;
 import static crypto.ByteHandler.*;
+import static crypto.Permutation.expPerm;
 
 public class SDES {
-    public static final int[] P10 = new int[] {3, 5, 2, 7, 4, 10, 1, 9, 8, 6};
-    public static final int[] IP = new int[] {2, 6, 3, 1, 4, 8, 5, 7};
-    public static final int[] IP_INV = new int[] {4, 1, 3, 5, 7, 2, 8, 6};
-    public static final int[] EP = new int[] {4, 1, 2, 3, 2, 3, 4, 1};
+    public static final int[] P10 = new int[] {2, 4, 1, 6, 3, 9, 0, 8, 7, 5};
+    public static final int[] P8 = new int[] {5, 2, 6, 3, 7, 4, 9, 8};
+    public static final int[] IP = new int[] {1, 5, 2, 0, 3, 7, 4, 6};
+    public static final int[] IP_INV = new int[] {3, 0, 2, 4, 6, 1, 7, 5};
+    public static final int[] EP = new int[] {3, 0, 1, 2, 1, 2, 3, 0};
+
+    public static final int[] P_K0 = new int[] {0, 6, 8, 3, 7, 2, 9, 5};
+    public static final int[] P_K1 = new int[] {7, 2, 5, 4, 9, 1, 8, 0};
 
     public static boolean[] key = new boolean[10];
+    public static boolean[] K0 = new boolean[8];
     public static boolean[] K1 = new boolean[8];
-    public static boolean[] K2 = new boolean[8];
     
 
     public SDES(){
-
+        getKey10(new Scanner(System.in));
+        K0 = expPerm(key, P_K0);
+        K1 = expPerm(key, P_K1);
     }
 
     /**

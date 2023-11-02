@@ -9,11 +9,24 @@ public class ByteHandler {
      * @author James Blake
      */
     public static byte encryptByte(byte b) {
-        boolean[] afterIP = expPerm(byteToBitArray(b, 1), IP);
-        boolean[] afterFk1 = f(afterIP, K1);
-        boolean[] swapped = concat(afterIP, afterFk1);
-        boolean[] afterFk2 = f(swapped, K2);
-        return bitArrayToByte(expPerm(afterFk2, IP_INV));
+        boolean[] tmp;
+        boolean[] left;
+        boolean[] right;
+
+        tmp = expPerm(byteToBitArray(b, Byte.SIZE), IP); // IP
+
+        left = lh(tmp);                               // L0
+        right = rh(tmp);                              // R0
+
+        tmp = xor(left, f(right, K0));                // L0 ^ f(R0, K0)
+        left = right;                                 // L0 = R0
+        right = tmp;                                  // R1 = L0 ^ f(R0, K0)
+
+        tmp = xor(left, f(right, K1));                // L1 ^ f(R1, K1)
+        left = right;                                 // L2 = R1
+        right = tmp;                                  // R2 = L1 ^ f(R1, K1)
+
+        return bitArrayToByte(expPerm(concat(left, right), IP_INV)); // IP_INV
     }
 
     /**
@@ -21,11 +34,24 @@ public class ByteHandler {
      * @author James Blake
      */
     public static byte decryptByte(byte b){
-        boolean[] afterIP = expPerm(byteToBitArray(b, 1), IP);
-        boolean[] afterFk2 = f(afterIP, K2);
-        boolean[] swapped = concat(afterIP, afterFk2);
-        boolean[] afterFk1 = f(swapped, K1);
-        return bitArrayToByte(expPerm(afterFk1, IP_INV));
+        boolean[] tmp;
+        boolean[] left;
+        boolean[] right;
+
+        tmp = expPerm(byteToBitArray(b, 8), IP); // inverse(IP_INV) = IP
+
+        left = lh(tmp);                               // L2 = R1
+        right = rh(tmp);                              // R2
+
+        tmp = xor(right, f(left, K1));                // L1 = R2 ^ F(R1, K1)
+        right = left;                                 // R1 = L2
+        left = tmp;                                   // L1 = R2 ^ F(R1, K1)
+
+        tmp = xor(right, f(left, K0));                // L0 = R1 ^ F(R0, K0)
+        right = left;                                 // R0 = L1
+        left = tmp;                                   // L0 = R1 ^ F(R0, K0)
+
+        return bitArrayToByte(expPerm(concat(left, right), IP_INV)); // inverse(IP) = IP_INV
     }
 
     /**
