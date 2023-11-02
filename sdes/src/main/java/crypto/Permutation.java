@@ -29,6 +29,17 @@ public class Permutation {
     }
 
     /**
+     * @author Keegan Kopas
+     * @param x
+     * @return
+     */
+    public static boolean[] p4 (boolean[] x) throws IllegalArgumentException{
+        if(x.length != 4) throw new IllegalArgumentException("P4 can only accept four booleans."); 
+        boolean[] result = {x[1], x[3], x[2], x[0]};
+        return result;
+    }
+
+    /**
      * Right half of x, R(x)
      * @author Kayla Weldon
      * @param inp input of bits

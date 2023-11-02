@@ -24,9 +24,22 @@ public class Logic {
      * todo: This is the 'round' function. 
      *  f(x,k) = P4 (s0 (L (k xor EP(x))) || s1 (R (k xor EP(x)))
      */
-    public static boolean[] f(boolean[] x, boolean[] k){
-        return null; 
+    public static boolean[] f(boolean[] x, boolean[] k) throws IllegalArgumentException{
+        int[] expansionVector = {3, 0, 1, 2, 1, 2, 3, 0};
+
+        boolean[] expandedX = Permutation.expPerm(k, null); 
+        
+        boolean[] leftHalf = Permutation.lh(xor(k, Permutation.expPerm(expandedX, expansionVector)));
+        boolean[] boxxedLeft = Logic.sboxZero(leftHalf);
+
+        boolean[] rightHalf = Permutation.rh(xor(k, Permutation.expPerm(expandedX, expansionVector)));
+        boolean[] boxxedRight = Logic.sboxOne(rightHalf);
+
+        boolean[] preP4 = Permutation.concat(boxxedLeft, boxxedRight);
+
+        return Permutation.p4(preP4);
     }
+
 
     
     /**
@@ -34,7 +47,7 @@ public class Logic {
      * @param x
      * @return
      */
-    public static boolean[] sboxOne(boolean[] x){
+    public static boolean[] sboxZero(boolean[] x){
 
         boolean[][] s_1 = {
             {false, true},  //0  01
@@ -63,7 +76,7 @@ public class Logic {
      * @param x
      * @return
      */
-    public static boolean[] sboxTwo(boolean[] x){
+    public static boolean[] sboxOne(boolean[] x){
 
         boolean[][] s_1 = {
             {false, false}, //0  00
