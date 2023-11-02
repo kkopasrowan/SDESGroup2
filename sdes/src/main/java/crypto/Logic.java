@@ -27,12 +27,12 @@ public class Logic {
     public static boolean[] f(boolean[] x, boolean[] k) throws IllegalArgumentException{
         int[] expansionVector = {3, 0, 1, 2, 1, 2, 3, 0};
 
-        boolean[] expandedX = Permutation.expPerm(k, null); 
+        boolean[] expandedX = Permutation.expPerm(k, expansionVector); 
         
-        boolean[] leftHalf = Permutation.lh(xor(k, Permutation.expPerm(expandedX, expansionVector)));
+        boolean[] leftHalf = Permutation.lh(xor(k, expandedX));
         boolean[] boxxedLeft = Logic.sboxZero(leftHalf);
 
-        boolean[] rightHalf = Permutation.rh(xor(k, Permutation.expPerm(expandedX, expansionVector)));
+        boolean[] rightHalf = Permutation.rh(xor(k, expandedX));
         boolean[] boxxedRight = Logic.sboxOne(rightHalf);
 
         boolean[] preP4 = Permutation.concat(boxxedLeft, boxxedRight);
